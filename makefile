@@ -72,5 +72,5 @@ clean:
 	@echo "----------------------------------------------------------------------"
 	@echo "cleaning..."
 	@echo "----------------------------------------------------------------------"
-	$(RM) ${COBJS} ${AOBJS} ${TARGET} *.p ${TARGET}.bin
+	$(RM) ${COBJS} ${AOBJS} ${TARGET} *.p ${TARGET}.bin ${TARGET}.map
 	@echo ""
