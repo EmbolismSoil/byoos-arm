@@ -39,8 +39,8 @@ SabreaAuto Board RAM layout:                    +----------------------+
 
 
 Key Goals
-=========
-Make the life of embedded engineers and companies, especially Automotive, simple. They had put several decades effort in delivering multiple productlines, with compleixities and requirements that are unique to Automotive products especially "Safety". Today they are forced to follow a fast changing, less safe consumer electronics trend. This project SHALL help retaining the positives of Automotive designs but also augment the benefits and contributions from mobile and CE industry.
+---------
+Make the life of embedded engineers and companies (especially Automotive), simple and safe. Such companies and people had put several decades effort in delivering multiple safety critical products, with compleixities and requirements that are unique to Automotive products. Today, they are forced to follow a fast changing, less safe consumer electronics trend. This project SHALL help retaining the positives (past) of Automotive designs but also augment the benefits and contributions (present & future) from mobile and CE industry.
 
 
 Status
@@ -53,5 +53,5 @@ The project is in concept stage, tested on Freescale I.MX6Q (ARM Cortex A9) base
 Suggestions, Critics are most welcome!
 
 
-Thanks,
+Thanks,  
 Aananth C N
