@@ -1,0 +1,332 @@
+Archive member included because of file (symbol)
+
+/usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+                              imx6x.o (__aeabi_uidiv)
+/usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+                              /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+
+Allocating common symbols
+Common symbol       size              file
+
+Count               0x4               byoos.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+ROM              0x000000008f800000 0x0000000000100000 xr
+RAM              0x000000008f900000 0x0000000000100000 xrw
+MOM              0x000000008fa00000 0x0000000000600000 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD startup.o
+LOAD byoos.o
+LOAD setup.o
+LOAD debug.o
+LOAD imx6x.o
+LOAD serial.o
+LOAD /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a
+                0x0000000000000200                C_STACK_SIZE = 0x200
+                0x0000000000000000                IRQ_STACK_SIZE = 0x0
+                0x0000000000000000                FIQ_STACK_SIZE = 0x0
+                0x0000000000000200                SVC_STACK_SIZE = 0x200
+                0x0000000000000000                ABT_STACK_SIZE = 0x0
+                0x0000000000000000                UND_STACK_SIZE = 0x0
+
+.reset          0x000000008f800000      0x200
+ *startup.o(.reset)
+ .reset         0x000000008f800000      0x140 startup.o
+                0x000000008f800000                _start
+                0x000000008f800200                . = ALIGN (0x200)
+ *fill*         0x000000008f800140       0xc0 
+
+.setup          0x000000008f800200       0x34
+ .setup         0x000000008f800200       0x34 setup.o
+                0x000000008f800200                byoos_setup
+
+.ramvect        0x000000008f900000       0x40
+                0x000000008f900000                __ram_start = .
+                0x0000000000000040                . = 0x40
+ *fill*         0x000000008f900000       0x40 
+
+.text           0x000000008f800234      0x3f8
+ CREATE_OBJECT_SYMBOLS
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x000000008f800234        0x0 startup.o
+ .text          0x000000008f800234       0xbc byoos.o
+                0x000000008f800234                low_level_init
+                0x000000008f800238                byoos_init
+                0x000000008f80023c                byoos_main
+ .text          0x000000008f8002f0       0x48 setup.o
+                0x000000008f8002f0                arm_setup
+ .text          0x000000008f800338       0x54 debug.o
+                0x000000008f800338                debugp
+ .text          0x000000008f80038c       0x78 imx6x.o
+                0x000000008f80038c                get_uart_clk
+                0x000000008f8003bc                soc_setup_n_go
+ .text          0x000000008f800404      0x110 serial.o
+                0x000000008f800404                serial_getc
+                0x000000008f800428                serial_putc
+                0x000000008f80045c                serial_tstc
+                0x000000008f800478                serial_init
+ .text          0x000000008f800514      0x114 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+                0x000000008f800514                __udivsi3
+                0x000000008f800514                __aeabi_uidiv
+                0x000000008f800608                __aeabi_uidivmod
+ .text          0x000000008f800628        0x4 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+                0x000000008f800628                __aeabi_ldiv0
+                0x000000008f800628                __aeabi_idiv0
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x0000000000000000        0x0 linker stubs
+                0x000000008f80062c                . = ALIGN (0x4)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+
+.vfp11_veneer   0x000000008f80062c        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x000000008f80062c        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x000000008f80062c        0x0
+ .iplt          0x0000000000000000        0x0 startup.o
+
+.rel.dyn        0x000000008f80062c        0x0
+ .rel.iplt      0x0000000000000000        0x0 startup.o
+
+.ARM.exidx      0x000000008f80062c        0x0
+                0x000000008f80062c                __exidx_start = .
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x000000008f80062c                __exidx_end = .
+                0x000000008f80062c                _etext = .
+
+.data           0x000000008f900040        0x4 load address 0x000000008f80062c
+                0x000000008f80062c                __data_load = LOADADDR (.data)
+                0x000000008f900040                __data_start = .
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x000000008f900040        0x0 startup.o
+ .data          0x000000008f900040        0x0 byoos.o
+ .data          0x000000008f900040        0x0 setup.o
+ .data          0x000000008f900040        0x0 debug.o
+ .data          0x000000008f900040        0x4 imx6x.o
+                0x000000008f900040                imx_ccm
+ .data          0x000000008f900044        0x0 serial.o
+ .data          0x000000008f900044        0x0 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+ .data          0x000000008f900044        0x0 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+                0x000000008f900044                . = ALIGN (0x4)
+                0x000000008f900044                _edata = .
+
+.igot.plt       0x000000008f900044        0x0 load address 0x000000008f800630
+ .igot.plt      0x0000000000000000        0x0 startup.o
+
+.bss            0x000000008f900044        0x8 load address 0x000000008f800630
+                0x000000008f900044                __bss_start__ = .
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x000000008f900044        0x0 startup.o
+ .bss           0x000000008f900044        0x1 byoos.o
+ .bss           0x000000008f900045        0x0 setup.o
+ .bss           0x000000008f900045        0x0 debug.o
+ .bss           0x000000008f900045        0x0 imx6x.o
+ .bss           0x000000008f900045        0x0 serial.o
+ .bss           0x000000008f900045        0x0 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+ .bss           0x000000008f900045        0x0 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+ *(COMMON)
+ *fill*         0x000000008f900045        0x3 
+ COMMON         0x000000008f900048        0x4 byoos.o
+                0x000000008f900048                Count
+                0x000000008f90004c                . = ALIGN (0x4)
+                0x000000008f90004c                __bss_end__ = .
+
+.stack          0x000000008f90004c      0x400 load address 0x000000008f800630
+                0x000000008f90004c                __stack_start__ = .
+                0x000000008f90004c                . = (. + IRQ_STACK_SIZE)
+                0x000000008f90004c                . = ALIGN (0x4)
+                0x000000008f90004c                __irq_stack_top__ = .
+                0x000000008f90004c                . = (. + FIQ_STACK_SIZE)
+                0x000000008f90004c                . = ALIGN (0x4)
+                0x000000008f90004c                __fiq_stack_top__ = .
+                0x000000008f90024c                . = (. + SVC_STACK_SIZE)
+ *fill*         0x000000008f90004c      0x200 
+                0x000000008f90024c                . = ALIGN (0x4)
+                0x000000008f90024c                __svc_stack_top__ = .
+                0x000000008f90024c                . = (. + ABT_STACK_SIZE)
+                0x000000008f90024c                . = ALIGN (0x4)
+                0x000000008f90024c                __abt_stack_top__ = .
+                0x000000008f90024c                . = (. + UND_STACK_SIZE)
+                0x000000008f90024c                . = ALIGN (0x4)
+                0x000000008f90024c                __und_stack_top__ = .
+                0x000000008f90044c                . = (. + C_STACK_SIZE)
+ *fill*         0x000000008f90024c      0x200 
+                0x000000008f90044c                . = ALIGN (0x4)
+                0x000000008f90044c                __c_stack_top__ = .
+                0x000000008f90044c                __stack_end__ = .
+                0x000000008f90044c                _end = .
+                0x000000008f90044c                __end = _end
+                0x000000008f90044c                PROVIDE (end, .)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+OUTPUT(byoos elf32-littlearm)
+
+.ARM.attributes
+                0x0000000000000000       0x2b
+ .ARM.attributes
+                0x0000000000000000       0x16 startup.o
+ .ARM.attributes
+                0x0000000000000016       0x30 byoos.o
+ .ARM.attributes
+                0x0000000000000046       0x30 setup.o
+ .ARM.attributes
+                0x0000000000000076       0x30 debug.o
+ .ARM.attributes
+                0x00000000000000a6       0x30 imx6x.o
+ .ARM.attributes
+                0x00000000000000d6       0x30 serial.o
+ .ARM.attributes
+                0x0000000000000106       0x18 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000000000000011e       0x18 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+
+.comment        0x0000000000000000       0x1f
+ .comment       0x0000000000000000       0x1f byoos.o
+                                         0x20 (size before relaxing)
+ .comment       0x0000000000000000       0x20 setup.o
+ .comment       0x0000000000000000       0x20 debug.o
+ .comment       0x0000000000000000       0x20 imx6x.o
+ .comment       0x0000000000000000       0x20 serial.o
+
+.debug_line     0x0000000000000000      0x37b
+ .debug_line    0x0000000000000000       0x85 startup.o
+ .debug_line    0x0000000000000085       0x5e byoos.o
+ .debug_line    0x00000000000000e3       0x71 setup.o
+ .debug_line    0x0000000000000154       0x5d debug.o
+ .debug_line    0x00000000000001b1       0x5c imx6x.o
+ .debug_line    0x000000000000020d       0x83 serial.o
+ .debug_line    0x0000000000000290       0x8a /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+ .debug_line    0x000000000000031a       0x61 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+
+.debug_info     0x0000000000000000      0xca2
+ .debug_info    0x0000000000000000       0x4e startup.o
+ .debug_info    0x000000000000004e      0x110 byoos.o
+ .debug_info    0x000000000000015e      0x24b setup.o
+ .debug_info    0x00000000000003a9       0xf5 debug.o
+ .debug_info    0x000000000000049e      0x5a2 imx6x.o
+ .debug_info    0x0000000000000a40      0x13a serial.o
+ .debug_info    0x0000000000000b7a       0x94 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+ .debug_info    0x0000000000000c0e       0x94 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+
+.debug_abbrev   0x0000000000000000      0x506
+ .debug_abbrev  0x0000000000000000       0x14 startup.o
+ .debug_abbrev  0x0000000000000014       0xd0 byoos.o
+ .debug_abbrev  0x00000000000000e4      0x10b setup.o
+ .debug_abbrev  0x00000000000001ef       0xb1 debug.o
+ .debug_abbrev  0x00000000000002a0      0x12d imx6x.o
+ .debug_abbrev  0x00000000000003cd      0x111 serial.o
+ .debug_abbrev  0x00000000000004de       0x14 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00000000000004f2       0x14 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+
+.debug_aranges  0x0000000000000000      0x108
+ .debug_aranges
+                0x0000000000000000       0x20 startup.o
+ .debug_aranges
+                0x0000000000000020       0x20 byoos.o
+ .debug_aranges
+                0x0000000000000040       0x28 setup.o
+ .debug_aranges
+                0x0000000000000068       0x20 debug.o
+ .debug_aranges
+                0x0000000000000088       0x20 imx6x.o
+ .debug_aranges
+                0x00000000000000a8       0x20 serial.o
+ .debug_aranges
+                0x00000000000000c8       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x00000000000000e8       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+
+.debug_str      0x0000000000000000      0x6d7
+ .debug_str     0x0000000000000000       0xf3 byoos.o
+                                        0x127 (size before relaxing)
+ .debug_str     0x00000000000000f3       0xcb setup.o
+                                        0x187 (size before relaxing)
+ .debug_str     0x00000000000001be       0x29 debug.o
+                                        0x115 (size before relaxing)
+ .debug_str     0x00000000000001e7      0x4b5 imx6x.o
+                                        0x59a (size before relaxing)
+ .debug_str     0x000000000000069c       0x3b serial.o
+                                        0x115 (size before relaxing)
+
+.debug_frame    0x0000000000000000      0x16c
+ .debug_frame   0x0000000000000000       0x4c byoos.o
+ .debug_frame   0x000000000000004c       0x38 setup.o
+ .debug_frame   0x0000000000000084       0x2c debug.o
+ .debug_frame   0x00000000000000b0       0x38 imx6x.o
+ .debug_frame   0x00000000000000e8       0x64 serial.o
+ .debug_frame   0x000000000000014c       0x20 /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+
+.debug_loc      0x0000000000000000      0x30f
+ .debug_loc     0x0000000000000000      0x116 setup.o
+ .debug_loc     0x0000000000000116       0x9d debug.o
+ .debug_loc     0x00000000000001b3      0x128 imx6x.o
+ .debug_loc     0x00000000000002db       0x34 serial.o
+
+.debug_ranges   0x0000000000000000       0x18
+ .debug_ranges  0x0000000000000000       0x18 setup.o
+
+Cross Reference Table
+
+Symbol                                            File
+Count                                             byoos.o
+__abt_stack_top__                                 startup.o
+__aeabi_idiv0                                     /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+                                                  /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+__aeabi_ldiv0                                     /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_dvmd_tls.o)
+__aeabi_uidiv                                     /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+                                                  imx6x.o
+__aeabi_uidivmod                                  /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+__bss_end__                                       startup.o
+__bss_start__                                     startup.o
+__c_stack_top__                                   startup.o
+__data_load                                       startup.o
+__data_start                                      startup.o
+__fiq_stack_top__                                 startup.o
+__irq_stack_top__                                 startup.o
+__stack_end__                                     startup.o
+__stack_start__                                   startup.o
+__svc_stack_top__                                 startup.o
+__udivsi3                                         /usr/lib/gcc/arm-none-eabi/4.8.2//libgcc.a(_udivsi3.o)
+__und_stack_top__                                 startup.o
+_edata                                            startup.o
+_start                                            startup.o
+                                                  imx6x.o
+arm_setup                                         setup.o
+byoos_init                                        byoos.o
+byoos_main                                        byoos.o
+                                                  startup.o
+byoos_setup                                       setup.o
+debugp                                            debug.o
+get_uart_clk                                      imx6x.o
+                                                  serial.o
+imx_ccm                                           imx6x.o
+low_level_init                                    byoos.o
+                                                  startup.o
+serial_getc                                       serial.o
+serial_init                                       serial.o
+serial_putc                                       serial.o
+                                                  debug.o
+serial_tstc                                       serial.o
+soc_setup_n_go                                    imx6x.o
+                                                  setup.o
