@@ -8,7 +8,7 @@ How to build
 ------------
 1. git clone "this project" 
 2. cd byoos-arm
-3. make
+3. make (Note: you may need to install arm-none-eabi- toolchain. For Ubuntu: sudo apt-get install gcc-arm-none-eabi)
 4. You will find "byoos.bin"
 
 
@@ -30,29 +30,29 @@ Reserve some memory space in either top of bottom of RAM. Load the "byoos.bin" i
 
 Example:
 <pre>
-/*********************************************************************************************
-  M E M O R Y L A Y O U T   -   B O O T   Y O U R   O W N   O P E R A T I N G   S Y S T E M 
-**********************************************************************************************
+/*********************************************************************************************  
+  M E M O R Y L A Y O U T   -   B O O T   Y O U R   O W N   O P E R A T I N G   S Y S T E M   
+**********************************************************************************************  
 
-SabreaAuto Board RAM layout:                    +----------------------+
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~                   /|                      |
-                                              / |                      |
-                                             /  | MOM: 6MB frame buff. |
- 0x8FFF_FFFF:  +----------------------------+   |                      |
-               |    MYOS: 8MB for core 3    |   |                      |
- 0x8F80_0000:  +----------------------------+   +----------------------+
-               |                            |\  | RAM: 1MB .data, .bss |
-               |                            | \ +----------------------+
-               |                            |  \| ROM: 1MB .text       |
-               |                            |   +----------------------+
-               | LINUX: 1.99 GB (2GB-8MB)   |
-               | for cores 0, 1 and 2       |
-               |                            |
-               |                            |
-               |                            |
-               |                            |
-               |                            |
- 0x1000_0000:  +----------------------------+
+SabreaAuto Board RAM layout:                    +----------------------+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~                   /|                      |  
+                                              / |                      |  
+                                             /  | MOM: 6MB frame buff. |  
+ 0x8FFF_FFFF:  +----------------------------+   |                      |  
+               |    MYOS: 8MB for core 3    |   |                      |  
+ 0x8F80_0000:  +----------------------------+   +----------------------+  
+               |                            |\  | RAM: 1MB .data, .bss |  
+               |                            | \ +----------------------+  
+               |                            |  \| ROM: 1MB .text       |  
+               |                            |   +----------------------+  
+               | LINUX: 1.99 GB (2GB-8MB)   |  
+               | for cores 0, 1 and 2       |  
+               |                            |  
+               |                            |  
+               |                            |  
+               |                            |  
+               |                            |  
+ 0x1000_0000:  +----------------------------+  
 </pre>
 
 
