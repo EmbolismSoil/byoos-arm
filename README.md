@@ -4,9 +4,27 @@ byoos-arm
 BYOOS -- Boot Your Own Operating Systems. Run your proprietary OS in one of your multi core platform running Linux.
 
 
+How to build
+------------
+1. git clone "this project" 
+2. cd byoos-arm
+3. make
+4. You will find "byoos.bin"
+
+
+How to test (Freescale SabreAuto Board)
+-----------
+1. Modify the PHYS_SDRAM_SIZE value such that you reserve some memory space as described in "Concept" section below.
+2. Modify the kernel dts file to allot only 3 cpus or disable SMP.
+2. Rebuild u-boot, kernel and update sdcard image.
+3. Copy the byoos.bin into the fat partition of sdcard
+4. Turn on Sabreauto, stop the execution of u-boot by typing any key with in the "bootdelay" time.
+5. Type command "go 0x8f800200". When this command returns, byoos.bin will be active on Core 3
+6. Then type "run bootcmd". Linux will be up on other core(s).
+
 
 Concept
--------
+=======
 
 Reserve some memory space in either top of bottom of RAM. Load the "byoos.bin" into the rserved space. Use the "go" command of u-boot (or any other bootloader) to execute a setup function which is placed at 0x200 bytes offset from the start of memory. The setup function then configures one of the core, as configured in "byoos_config.h" in AMP mode and makes the core executing the byoos and the OS that is linked to this.
 
