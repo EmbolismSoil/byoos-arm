@@ -16,7 +16,7 @@
  * Globals */
 
 #define RELOAD_VAL	(65536 * 50)
-volatile u32 Count;
+volatile u32 Count = 0x1234;
 
 
 /*-----------------------------------------------------------------------------
@@ -30,40 +30,22 @@ void low_level_init(void (*reset_addr)(), void (*return_addr)())
 /* All BYOOS init are done here */
 void byoos_init(void)
 {
-	//serial_init();
+	//serial_init(); FIXME: Do not init serial until we have a design to
+	//manage terminal outputs printed or scanned by Linux OS in BYOOS.
+	//For now, let byoos abuse the serial terminal :-). 
 }
 
 /* BYOOS main */
 int byoos_main(void)
 {
-	static u8 ascii;
-
-	*((volatile unsigned long *)(0x021F0040)) = '#';
-	*((volatile unsigned long *)(0x021F0040)) = '\n';
 	byoos_init();
-	*((volatile unsigned long *)(0x021F0040)) = '$';
-	*((volatile unsigned long *)(0x021F0040)) = '\n';
-	//debugp(INFO_MSG, "MYOS init complete, entering main loop \n");
+	debugp(INFO_MSG, "BYOOS init complete, entering main loop \n");
 
-	*((volatile unsigned long *)(0x021F0040)) = '@';
-	*((volatile unsigned long *)(0x021F0040)) = '\n';
-
-	Count = RELOAD_VAL;
-	ascii = '0';
 	while(1) {
 		Count--;
 		if(Count == 0) {
 			Count = RELOAD_VAL;
-			//debugp(INFO_MSG, "DI Kernel is alive");
-			*((volatile unsigned long *)(0x021F0040)) = ascii;
-			*((volatile unsigned long *)(0x021F0040)) = '\n';
-			*((volatile unsigned long *)(0x021F0040)) = '\r';
-			if(ascii == 'z') {
-				ascii = '0';
-			}
-			else {
-				ascii++;
-			}
+			debugp(INFO_MSG, "DI Kernel is alive\n");
 		}
 	}
 

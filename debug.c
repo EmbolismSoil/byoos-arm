@@ -13,7 +13,7 @@
 
 #include <stdio.h>
 
-static int system_dlevel;
+static volatile int system_dlevel;
 
 void debugp(int dlevel, const char *str)
 {

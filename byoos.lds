@@ -21,7 +21,7 @@ SabreaAuto Board RAM layout:                    +----------------------+
                                               / |                      |
                                              /  | MOM: 6MB frame buff. |
  0x8FFF_FFFF:  +----------------------------+   |                      |
-               |    MYOS: 8MB for core 3    |   |                      |
+               |   BYOOS: 8MB for core 3    |   |                      |
  0x8F80_0000:  +----------------------------+   +----------------------+
                |                            |\  | RAM: 1MB .data, .bss |
                |                            | \ +----------------------+
@@ -44,12 +44,12 @@ MEMORY {
 }
 
 /* The size of the single stack used by the application */
-C_STACK_SIZE = 512;
-IRQ_STACK_SIZE = 0;
-FIQ_STACK_SIZE = 0;
-SVC_STACK_SIZE = 512;
-ABT_STACK_SIZE = 0;
-UND_STACK_SIZE = 0;
+C_STACK_SIZE 	= 512;
+IRQ_STACK_SIZE 	= 512;
+FIQ_STACK_SIZE 	= 512;
+SVC_STACK_SIZE 	= 512;
+ABT_STACK_SIZE 	= 128;
+UND_STACK_SIZE 	= 128;
 
 
 SECTIONS {

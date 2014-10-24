@@ -39,7 +39,7 @@ SabreaAuto Board RAM layout:                    +----------------------+
                                               / |                      |  
                                              /  | MOM: 6MB frame buff. |  
  0x8FFF_FFFF:  +----------------------------+   |                      |  
-               |    MYOS: 8MB for core 3    |   |                      |  
+               |   BYOOS: 8MB for core 3    |   |                      |  
  0x8F80_0000:  +----------------------------+   +----------------------+  
                |                            |\  | RAM: 1MB .data, .bss |  
                |                            | \ +----------------------+  
