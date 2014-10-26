@@ -5,16 +5,25 @@
 #
 # This is a makefile for a tiny OS built using GNU toolchains
 
-CC = arm-none-eabi-gcc
-AS = arm-none-eabi-as
-PP = arm-none-eabi-cpp
-LD = arm-none-eabi-ld
-OC = arm-none-eabi-objcopy
+include ipcm/ipcm.mk
+
+.PHONY: all
+
+TOOLCHAIN = arm-none-eabi
+
+CC = ${TOOLCHAIN}-gcc
+AS = ${TOOLCHAIN}-as
+AR = ${TOOLCHAIN}-ar
+PP = ${TOOLCHAIN}-cpp
+LD = ${TOOLCHAIN}-ld
+OC = ${TOOLCHAIN}-objcopy
 
 TARGET 	= byoos
 
 # Though ARM Cortex A9 supports both little and big endian but I.MX supports
 # little endian only!!
+IFLAGS = -I. -I./ipcm/
+
 CFLAGS 	= -c -g \
 	-mlittle-endian \
 	-Wall \
@@ -39,9 +48,9 @@ COBJS = byoos.o \
 
 AOBJS = startup.o
 
-all: byoos_objs 
 
-byoos_objs: $(AOBJS) $(COBJS)
+
+all: $(AOBJS) $(COBJS) $(IPCM_LIB)
 	@echo ""
 	@echo "----------------------------------------------------------------------"
 	@echo "linking..." 
@@ -49,12 +58,17 @@ byoos_objs: $(AOBJS) $(COBJS)
 	$(LD) -o ${TARGET} $^ ${LFLAGS} -T ${TARGET}.lds
 	$(OC) $(TARGET) -O binary $(TARGET).bin
 	@echo ""
+	@echo "----------------------------------------------------------------------"
+	@echo "Building IPCM Client"
+	@echo "----------------------------------------------------------------------"
+	$(MAKE) -C ipcm/client
+	@echo ""
 
 
 %.o: %.c
 	@echo ""
 	@echo "compiling $<"
-	$(CC) -o $@ $< $(CFLAGS)
+	$(CC) -o $@ $< $(CFLAGS) $(IFLAGS)
 	@echo ""
 
 %.o: %.s
@@ -66,11 +80,11 @@ byoos_objs: $(AOBJS) $(COBJS)
 	$(AS) -o $@ $(subst .s,.p,$<) $(AFLAGS)
 	@echo ""
 
-
-clean:
+clean: ipcm_clean
 	@echo ""
 	@echo "----------------------------------------------------------------------"
 	@echo "cleaning..."
 	@echo "----------------------------------------------------------------------"
 	$(RM) ${COBJS} ${AOBJS} ${TARGET} *.p ${TARGET}.bin ${TARGET}.map
 	@echo ""
+	$(MAKE) -C ipcm/client clean

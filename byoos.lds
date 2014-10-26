@@ -140,7 +140,6 @@ SECTIONS {
 	__end = _end;
 	PROVIDE(end = .);
 
- 
 	.stab 0 (NOLOAD) : {
 		*(.stab)
 	}

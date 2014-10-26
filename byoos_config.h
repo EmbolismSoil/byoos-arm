@@ -53,4 +53,15 @@
  */
 #define CONFIG_DEBUG_CHAR_MAX	64
 
+
+/*
+ * IPCM Server Block location
+ */
+#define CONFIG_IPCM_SRV_BLK_ADDR	(0x8FA00000) /* start of MOM, see
+							byoos.lds */
+
+/*
+ * IPCM data length - enter the max buffer size for IPCM commns
+ */
+#define CONFIG_IPCM_DATA_LEN	(4096)
 #endif

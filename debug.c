@@ -14,12 +14,17 @@
 #include <stdio.h>
 
 static volatile int system_dlevel;
+static char prompt[] = "BYOOS$ ";
 
 void debugp(int dlevel, const char *str)
 {
 	int i;
 
 	if(dlevel >= system_dlevel) {
+		for(i = 0; prompt[i]; i++) {
+			serial_putc(prompt[i]);
+		}
+
 		for(i = 0; (i < CONFIG_DEBUG_CHAR_MAX) && str[i]; i++) {
 			serial_putc(str[i]);
 		}

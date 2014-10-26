@@ -11,6 +11,7 @@
 #include "byoos_config.h"
 #include "debug.h"
 #include "serial.h"
+#include "ipcm.h"
 
 /*-----------------------------------------------------------------------------
  * Globals */
@@ -32,7 +33,10 @@ void byoos_init(void)
 {
 	//serial_init(); FIXME: Do not init serial until we have a design to
 	//manage terminal outputs printed or scanned by Linux OS in BYOOS.
-	//For now, let byoos abuse the serial terminal :-). 
+	//For now, let byoos abuse the serial terminal :-).
+
+
+	ipcm_init();
 }
 
 /* BYOOS main */
@@ -42,6 +46,7 @@ int byoos_main(void)
 	debugp(INFO_MSG, "BYOOS init complete, entering main loop \n");
 
 	while(1) {
+		ipcm_exec();
 		Count--;
 		if(Count == 0) {
 			Count = RELOAD_VAL;
