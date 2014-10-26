@@ -33,7 +33,9 @@ CFLAGS 	= -c -g \
 LFLAGS = -g 
 
 
-COBJS = ipcm_client.o 
+COBJS = ipcm_client.o \
+	ipcm_client_cmds.o \
+	ipcm_server_cmds.o 
 
 
 all: $(COBJS)

@@ -86,9 +86,11 @@ struct ipcm_cmd {
 #undef IPCM_CMD
 #define IPCM_CMD(x)	int ipcm_fun_##x(void);
 #include "ipcm_cmds.h"
-#endif
 
 extern struct ipcm_cmd ipcm_cmd_table[];
 
-void ipcm_init(void);
-void ipcm_exec(void);
+int ipcm_init(void);
+int ipcm_exec(void);
+
+
+#endif

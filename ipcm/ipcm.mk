@@ -8,7 +8,7 @@
 IPCM_LIB = ipcm_lib.o
 
 IPCM_OBJS = 	ipcm/ipcm.o \
-		ipcm/ipcm_base_cmds.o \
+		ipcm/server/ipcm_client_cmds.o \
 		ipcm/server/ipcm_server.o
 
 $(IPCM_LIB): $(IPCM_OBJS)

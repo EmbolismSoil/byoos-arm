@@ -30,3 +30,8 @@ void debugp(int dlevel, const char *str)
 		}
 	}
 }
+
+void set_debug_level(int level)
+{
+	system_dlevel = level;
+}

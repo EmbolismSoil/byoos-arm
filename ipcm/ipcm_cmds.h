@@ -17,3 +17,4 @@
 IPCM_CMD(NOP)	/* No operation */
 IPCM_CMD(READ)	/* Read - the initiator, client/server wants to read */
 IPCM_CMD(WRITE) /* Write - the initator wants to write */
+IPCM_CMD(DEBUG_SET) /* Set Debug Level */

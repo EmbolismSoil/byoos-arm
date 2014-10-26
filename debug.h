@@ -18,5 +18,6 @@ enum {
 
 void debugp(int dlevel, const char *str);
 void debug_sys_init(void);
+void set_debug_level(int level);
 
 #endif
