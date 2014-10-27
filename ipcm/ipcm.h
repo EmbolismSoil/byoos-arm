@@ -58,7 +58,7 @@
 
 struct ipcm_data {
 	u32 len;
-	u8 data[CONFIG_IPCM_DATA_LEN - sizeof(u32)];
+	u8 data[CONFIG_IPCM_DATA_LEN];
 };
 
 struct ipcm_block {

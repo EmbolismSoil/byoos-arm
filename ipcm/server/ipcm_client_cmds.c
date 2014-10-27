@@ -33,7 +33,7 @@ int ipcm_fun_READ(void)
 int ipcm_fun_WRITE(void)
 {
 	debugp(INFO_MSG, "BYOOS: Linux client called \"WRITE\" function!\n");
-	debugp(INFO_MSG, pserver_block->cmd_data.data);
+	debugp(INFO_MSG, (char *)pserver_block->cmd_data.data);
 	debugp(INFO_MSG, "\n");
 	return 0;
 }
